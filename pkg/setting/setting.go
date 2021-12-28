@@ -46,7 +46,7 @@ func LoadServer(){
 func LoadApp() {
 	sec, err := Cfg.GetSection("app")
 	if err != nil {
-		log.Fatal(2,"Fail to get section 'app':%v",err)
+		log.Fatal(2,"Fail to get section 'app':%v1",err)
 	}
 
 	JwtSecret = sec.Key("JWT_SECRET").MustString("!@)*#)!@U#@*!@!)")

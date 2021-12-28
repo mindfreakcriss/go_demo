@@ -1,9 +1,12 @@
 package routers
 
 import (
+	_ "gin-blog/docs" //不加会内部错误
 	"gin-blog/pkg/setting"
 	v1 "gin-blog/routers/api/v1"
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func InitRouter() *gin.Engine {
@@ -14,6 +17,9 @@ func InitRouter() *gin.Engine {
 	r.Use(gin.Recovery())
 	
 	gin.SetMode(setting.RunMode)
+
+	//不加会404
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	apiv1 := r.Group("/api/v1")
 	{

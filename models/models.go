@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin-blog/pkg/setting"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
 )
 
@@ -11,7 +12,7 @@ var db *gorm.DB
 
 type Model struct {
 	 ID int `gorm:"primary_key" json:"id"`
-	 CreateOn int `json:"create_on"`
+	 CreatedOn int `json:"created_on"`
 	 ModifiedOn int `json:"modified_on"`
 }
 
